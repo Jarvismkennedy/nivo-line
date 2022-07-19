@@ -901,7 +901,9 @@
       setSliceByIndex(sliceDict);
     }, [data, slices]);
     react.useEffect(function () {
-      if (!currentlyHovered && setSliceId) {
+      if (sliceId == null) {
+        setCurrentSlice(null);
+      } else if (!currentlyHovered && setSliceId) {
         setCurrentSlice(sliceByIndex[sliceId] || null);
       }
     }, [sliceId, sliceByIndex]);
