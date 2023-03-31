@@ -198,7 +198,9 @@ declare module '@nivo/line' {
 
         enableCrosshair?: boolean
         crosshairType?: CrosshairType
-
+        sliceId?: number
+        setSliceId: (n:number) => void
+        
         legends?: LegendProps[]
     }
 
