@@ -69,7 +69,7 @@ declare module '@nivo/line' {
     export interface CustomLayerProps extends Omit<LineSvgProps, 'xScale' | 'yScale'> {
         innerHeight: number
         innerWidth: number
-        lineGenerator: D3Line<Array<ComputedDatum['position']>>
+        lineGenerator: D3Line<ComputedDatum['position']>
         points: Point[]
         series: ComputedSerie[]
         xScale: Scale<unknown, unknown>
@@ -198,9 +198,7 @@ declare module '@nivo/line' {
 
         enableCrosshair?: boolean
         crosshairType?: CrosshairType
-        sliceId?: number
-        setSliceId?: (n:number) => void
-        
+
         legends?: LegendProps[]
     }
 

@@ -100,6 +100,10 @@ SlicesItem.propTypes = {
     tooltip: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     isCurrent: PropTypes.bool.isRequired,
     setCurrent: PropTypes.func.isRequired,
+    onMouseEnter: PropTypes.func,
+    onMouseMove: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    onClick: PropTypes.func,
 }
 
 export default memo(SlicesItem)

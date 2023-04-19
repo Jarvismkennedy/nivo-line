@@ -184,6 +184,72 @@ stories.add('time scale', () => (
     />
 ))
 
+stories.add('time scale milliseconds precision', () => (
+    <Line
+        {...commonProperties}
+        data={[
+            {
+                id: 'signal A',
+                data: [
+                    { x: '2018-01-01 12:00:01.100', y: 7 },
+                    { x: '2018-01-01 12:00:01.110', y: 5 },
+                    { x: '2018-01-01 12:00:01.120', y: 11 },
+                    { x: '2018-01-01 12:00:01.130', y: 9 },
+                    { x: '2018-01-01 12:00:01.140', y: 12 },
+                    { x: '2018-01-01 12:00:01.150', y: 16 },
+                    { x: '2018-01-01 12:00:01.160', y: 13 },
+                    { x: '2018-01-01 12:00:01.170', y: 13 },
+                ],
+            },
+            {
+                id: 'signal B',
+                data: [
+                    { x: '2018-01-01 12:00:01.100', y: 14 },
+                    { x: '2018-01-01 12:00:01.110', y: 14 },
+                    { x: '2018-01-01 12:00:01.120', y: 15 },
+                    { x: '2018-01-01 12:00:01.130', y: 11 },
+                    { x: '2018-01-01 12:00:01.140', y: 10 },
+                    { x: '2018-01-01 12:00:01.150', y: 12 },
+                    { x: '2018-01-01 12:00:01.160', y: 9 },
+                    { x: '2018-01-01 12:00:01.170', y: 7 },
+                ],
+            },
+        ]}
+        xScale={{
+            type: 'time',
+            format: '%Y-%m-%d %H:%M:%S.%L',
+            useUTC: false,
+            precision: 'millisecond',
+        }}
+        xFormat="time:%Y-%m-%d %H:%M:%S.%L"
+        yScale={{
+            type: 'linear',
+            stacked: boolean('stacked', false),
+        }}
+        axisLeft={{
+            legend: 'linear scale',
+            legendOffset: 12,
+        }}
+        axisBottom={{
+            format: '.%L',
+            tickValues: 'every 10 milliseconds',
+            legend: 'time scale',
+            legendOffset: -12,
+        }}
+        curve={select('curve', curveOptions, 'monotoneX')}
+        enablePointLabel={true}
+        pointSymbol={CustomSymbol}
+        pointSize={16}
+        pointBorderWidth={1}
+        pointBorderColor={{
+            from: 'color',
+            modifiers: [['darker', 0.3]],
+        }}
+        useMesh={true}
+        enableSlices={false}
+    />
+))
+
 stories.add('logarithmic scale', () => (
     <Line
         {...commonProperties}
@@ -584,61 +650,15 @@ stories.add('custom min/max y', () => (
             {
                 id: 'fake corp. A',
                 data: [
-                    0.5,
-                    0.6,
-                    0.8,
-                    0.7,
-                    0.8,
-                    0.5,
-                    0.2,
-                    0.3,
-                    0.4,
-                    0.5,
-                    0.5,
-                    0.1,
-                    -0.2,
-                    -0.6,
-                    -0.1,
-                    0,
-                    0.1,
-                    -0.1,
-                    -0.4,
-                    -0.6,
-                    -0.5,
-                    0.2,
-                    0.5,
-                    0.6,
-                    0.6,
+                    0.5, 0.6, 0.8, 0.7, 0.8, 0.5, 0.2, 0.3, 0.4, 0.5, 0.5, 0.1, -0.2, -0.6, -0.1, 0,
+                    0.1, -0.1, -0.4, -0.6, -0.5, 0.2, 0.5, 0.6, 0.6,
                 ].map((y, i) => ({ x: `#${i}`, y })),
             },
             {
                 id: 'fake corp. B',
                 data: [
-                    0.9,
-                    0.5,
-                    0.6,
-                    0.5,
-                    0.4,
-                    0.3,
-                    -0.1,
-                    -0.5,
-                    -0.4,
-                    -0.4,
-                    -0.1,
-                    -0.3,
-                    -0.2,
-                    0.1,
-                    0.1,
-                    0.3,
-                    0.4,
-                    0.5,
-                    0.4,
-                    0.6,
-                    0.5,
-                    0.7,
-                    0.8,
-                    0.4,
-                    0.3,
+                    0.9, 0.5, 0.6, 0.5, 0.4, 0.3, -0.1, -0.5, -0.4, -0.4, -0.1, -0.3, -0.2, 0.1,
+                    0.1, 0.3, 0.4, 0.5, 0.4, 0.6, 0.5, 0.7, 0.8, 0.4, 0.3,
                 ].map((y, i) => ({ x: `#${i}`, y })),
             },
         ]}
