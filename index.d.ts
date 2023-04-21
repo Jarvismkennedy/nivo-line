@@ -188,7 +188,8 @@ declare module '@nivo/line' {
         onClick?: PointMouseHandler
 
         debugMesh?: boolean
-
+        sliceId?: number
+        setSliceId?: (n:number) => void
         enableSlices?: 'x' | 'y' | false
         debugSlices?: boolean
         sliceTooltip?: SliceTooltip
